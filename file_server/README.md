@@ -1,3 +1,28 @@
+# using the client
+```
+$erl
+    Eshell V7.1  (abort with ^G)
+    1> c([afile_server], [afile_client]). 
+    {ok,afile_server}
+    2> 
+    2> [c(Module) || Module <- [afile_server, afile_client]].
+    [{ok,afile_server},{ok,afile_client}]
+    3> Server = afile_server:start("."). 
+    <0.54.0>
+    4> 
+    4> afile_client:ls(Server).    
+    {ok,["afile_client.erl","afile_client.beam","README.md",
+        "afile_server.beam","afile_server.erl"]}
+    5> 
+    5> afile_client:get_file(Server, "afile_client.erl"). 
+    {ok,<<"-module(afile_client).\n-export([ls/1, get_file/2]).\n\nls(Server) ->\n    Server ! {self(), list_dir},\n    rece"...>>}
+    6> 
+    6> afile_client:get_file(Server, "missing").          
+    {error,enoent}
+    7> 
+```
+
+# directly use the server
 ```
     $ erl
       Eshell V7.1  (abort with ^G)
