@@ -5,5 +5,5 @@
 test() ->
     12  = area({rectangle, 3, 4}),
     144 = area({square, 12}),
-    15  = area({triangle, 5, 3}),
+    15.0  = area({triangle, 5, 6}),
     test_worked.
