@@ -10,5 +10,6 @@ area({rectangle, Width, Height})      %% head
     %% body %%
     Width * Height                    %% expression
     ;                                 %% clause's separator
-area({square, Side}) -> Side * Side.                   %% second (and last) clause (terminated by . )
+area({square, Side}) -> Side * Side;                   %% second (and last) clause (terminated by . )
 area({circle, Radius}) -> 3.1415 * Radius * Radius;
+area({triangle, Base, Height}) -> (Base * Height) / 2.
